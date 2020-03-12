@@ -1,0 +1,65 @@
+<template>
+  <div>
+      <!-- <button v-if="canFollow && me" @click="onFollow">팔로우</button>
+      <button v-else-if="canUnFollow && me" @click="onUnFollow">언팔로우</button>
+      <template v-for="(node,index) in nodes">
+          <strong v-if="node.startsWith('#')" :key="index">{{node}}</strong>
+          <template v-else>{{node}}</template>
+      </template> -->
+      <board-image :images="board.images" /> 
+      <v-card-title>
+          <h3>
+              <router-link :to="`/user/${board.user.id}`" style="text-decoration:none;color:black">{{board.user.name}}</router-link>
+              
+              <v-btn v-if="canFollow" @click="onFollow">팔로우</v-btn>
+              <v-btn v-if="canUnFollow" @click="onUnFollow">언팔로우</v-btn>
+          </h3>
+      </v-card-title>
+      <v-card-text>
+          <div style="text-align:left;">
+              <template v-for="(node,i) in nodes">
+                  <router-link v-if="node.startsWith('#')" :to="`/hashtag/${node.slice(1)}`" :key="i" style="text-decoration:none">{{node}}</router-link>
+                  <template v-else>{{node}}<template>
+              </template>
+          </div>
+      </v-card-text>
+  </div>
+</template>
+
+<script>
+import boardImage from './boardImage'
+export default {
+    props:{
+        board: Object
+    },
+    components:{
+        boardImage
+    },
+    computed:{
+        nodes(){
+            return this.board.content.split(/(#[^\s#]+)/)
+        },
+        me(){
+            return this.$store.state.user.me
+        },
+        canFollow(){
+            return this.me && this.me.id !== this.board.user.id && !this.me.Followings.find(v => v.id === this.board.user.id)
+        },
+        canUnFollow(){
+            return this.me && this.me.id !== this.board.user.id && this.me.Followings.find(v => v.id === this.board.user.id)
+        }   
+    },
+    methods:{
+        onFollow(){
+            this.$store.dispatch('user/follow',this.board.user.id)
+        },
+        onUnFollow(){
+            this.$store.dispatch('user/unfollow',this.board.user.id)
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
