@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 exports.isLoggedIn = (req,res,next) =>{
+    console.log(req.user)
     if(req.isAuthenticated()){
         next();
     }else{
@@ -12,6 +13,6 @@ exports.isNotLoggedIn = (req,res,next) =>{
     if(!req.isAuthenticated()){
         next();
     }else{
-        res.send('로그인이 되어있는디여?')
+        res.send('로그인이 되어있습니다.')
     }
 }

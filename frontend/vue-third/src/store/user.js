@@ -56,11 +56,13 @@ const mutations = {
 
 const actions = {
     loadUser({commit,state}){
-        
+        console.log(2)
         return axios.get('/user')
        .then(res=>{
             console.log(res)
+            console.log(3)
             if(typeof res.data === 'object') commit('setMe',res.data)
+            console.log(state.me)
            
         })
        .catch(err=>{
@@ -121,6 +123,17 @@ const actions = {
          console.log(err)
      ])
   },  
+
+//   facebookLogin(){
+//     axios.get('/auth/facebook')
+//     .catch(err=>{
+//         console.error(err)
+//     })
+//   },
+//   googleLogin(){
+//     axios.get('/auth/google')
+//   },  
+//  axios 요청 시 cors 문제 발생
 
   follow({commit},userId){
        axios({

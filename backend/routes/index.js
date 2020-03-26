@@ -28,9 +28,14 @@ router.get('/auth/facebook',passport.authenticate('facebook',{ scope:
 router.get('/auth/facebook/callback',passport.authenticate('facebook',{
   failureRedirect:'/'
 }),(req,res)=>{
+
   
-  res.redirect('/')
+  res.redirect('/#')
+  
+  
 })
+
+
 
 
 

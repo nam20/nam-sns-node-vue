@@ -9,6 +9,9 @@
                       
                       <v-btn @click="onLogIn">로그인</v-btn>
                       <v-btn @click="$router.push('/signup')">회원가입</v-btn>
+                      <a href="http://localhost:3000/auth/facebook" style="text-decoration-line: none;"><v-btn >페북</v-btn></a>
+                      <a href="http://localhost:3000/auth/google" style="text-decoration-line: none;"><v-btn >구글</v-btn></a>
+                      
                   </v-container>
               </v-form>
           </v-card>
@@ -71,11 +74,20 @@ export default {
         onLogOut(){
             this.$store.dispatch('user/logout')
         },
+        // facebookLogin(){
+        //     this.$store.dispatch('user/facebookLogin')
+        // },
+        // googleLogin(){
+        //     this.$store.dispatch('user/googleLogin')
+        // }
         
         
     },
     created(){
-        this.$store.dispatch('user/loadUser')
+            console.log(1)
+            this.$store.dispatch('user/loadUser')
+        
+      
     }
 }
 </script>
