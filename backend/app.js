@@ -4,7 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var flash = require('connect-flash')
+
+var redis = require('redis')
 var session = require('express-session')
+var RedisStore = require('connect-redis')(session)
+
 var sequelize = require('./models').sequelize;
 const passport = require('passport')
 const helmet = require('helmet');
@@ -42,6 +46,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/',express.static(path.join(__dirname,'uploads')))
+
+
+
+let redisClinet = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+
+var redisConnectionResult = redisClinet.auth(process.env.REDIS_PASSWORD, err => {
+
+  if (err) console.log(err, " 에러 발생");
+
+});
+// console.log("redis 연결 결과 - ", redisConnectionResult);
+
 app.use(session({
   resave:false,
   saveUninitialized:false,
@@ -49,7 +65,14 @@ app.use(session({
   cookie:{
     httpOnly:true,
     secure:false
-  }
+  },
+  store: new RedisStore({ 
+    client:redisClinet,
+    host:process.env.REDIS_HOST,
+    port:process.env.REDIS_PORT,
+    pass:process.env.REDIS_PASSWORD,
+    logErrors:true 
+    })
 }))
 
 app.use(passport.initialize())

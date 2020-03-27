@@ -28,14 +28,16 @@ router.get('/auth/facebook',passport.authenticate('facebook',{ scope:
 router.get('/auth/facebook/callback',passport.authenticate('facebook',{
   failureRedirect:'/'
 }),(req,res)=>{
-
-  
   res.redirect('/#')
-  
-  
 })
 
+router.get('/auth/kakao',passport.authenticate('kakao'))
 
+router.get('/auth/kakao/callback',passport.authenticate('kakao',{
+  failureRedirect:'/'
+}),(req,res)=>{
+  res.redirect('/')
+})
 
 
 

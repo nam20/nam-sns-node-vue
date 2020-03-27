@@ -15,7 +15,7 @@ const upload = multer()
 
 router.get('/',isLoggedIn,async (req,res,next)=>{  //유저 정보
 
-   
+    console.log(req.session)
     res.json(req.user)
   })
   

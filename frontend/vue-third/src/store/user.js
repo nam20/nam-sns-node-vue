@@ -56,13 +56,13 @@ const mutations = {
 
 const actions = {
     loadUser({commit,state}){
-        console.log(2)
+       
         return axios.get('/user')
        .then(res=>{
-            console.log(res)
-            console.log(3)
+       
+          
             if(typeof res.data === 'object') commit('setMe',res.data)
-            console.log(state.me)
+          
            
         })
        .catch(err=>{
