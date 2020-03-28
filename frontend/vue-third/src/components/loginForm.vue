@@ -12,6 +12,7 @@
                       <a href="http://localhost:3000/auth/facebook" style="text-decoration-line: none;"><v-btn >페북</v-btn></a>
                       <a href="http://localhost:3000/auth/google" style="text-decoration-line: none;"><v-btn >구글</v-btn></a>
                       <a href="http://localhost:3000/auth/kakao" style="text-decoration-line: none;"><v-btn >카카오</v-btn></a>
+                      <a href="http://localhost:3000/auth/naver" style="text-decoration-line: none;"><v-btn >네이버</v-btn></a>
                       
                   </v-container>
               </v-form>

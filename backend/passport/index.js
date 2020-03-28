@@ -1,8 +1,11 @@
+const {User,Board} = require('../models')
+
 const local = require('./localStrategy')
 const kakao = require('./kakaoStrategy')
-const {User,Board} = require('../models')
 const facebook = require('./facebookStraregy')
 const google = require('./googleStrategy')
+const naver = require('./naverStrategy')
+
 
 module.exports = (passport) =>{
     passport.serializeUser((user,done)=>{
@@ -32,4 +35,5 @@ module.exports = (passport) =>{
      facebook(passport)
      google(passport)
      kakao(passport)
+     naver(passport)
 }

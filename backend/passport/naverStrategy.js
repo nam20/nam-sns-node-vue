@@ -1,17 +1,18 @@
-const KakaoStrategy = require('passport-kakao').Strategy
+const NaverStrategy = require('passport-naver').Strategy
 
 const {User} = require('../models')
 
 module.exports = (passport) =>{
-    passport.use(new KakaoStrategy({
-        clientID: process.env.KAKAO_CLIENT_ID,
-        clientSecret:process.env.KAKAO_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3000/auth/kakao/callback',
+    passport.use(new NaverStrategy({
+        clientID:process.env.NAVER_CLIENT_ID,
+        clientSecret:process.env.NAVER_CLIENT_SECRET,
+        callbackURL: 'http://localhost:3000/auth/naver/callback',
     }, async (accessToken, refreshToken,profile,done)=>{
-
+            console.log('==========')
             console.log(profile)
+            console.log('==========')
         try{
-            const exUser = await User.findOne({where:{snsID:profile.id,provider:'kakao'}})
+            const exUser = await User.findOne({where:{snsID:profile.id,provider:'naver'}})
             if(exUser){
                 done(null,exUser)
             }else{
@@ -19,7 +20,7 @@ module.exports = (passport) =>{
                     name:profile.displayName,
                     userId:profile.id,
                     snsId:profile.id,
-                    provider: 'kakao'
+                    provider: 'naver'
                 })
                 done(null,newUser)
             }

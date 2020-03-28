@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('user',{
         userId:{
-            type : DataTypes.STRING(20),
+            type : DataTypes.STRING(40),
             allowNull : false,
             unique: true
         },
@@ -13,10 +13,10 @@ module.exports = (sequelize, DataTypes) => {
             type : DataTypes.STRING(200),
             allowNull : true,
         },
-        comment:{
-            type: DataTypes.TEXT,
-            allowNull: true,
-        },
+        // comment:{
+        //     type: DataTypes.TEXT,
+        //     allowNull: true,
+        // },
         provider:{
             type: DataTypes.STRING(10),
             allowNull:false,

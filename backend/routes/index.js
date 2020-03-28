@@ -39,7 +39,13 @@ router.get('/auth/kakao/callback',passport.authenticate('kakao',{
   res.redirect('/')
 })
 
+router.get('/auth/naver',passport.authenticate('naver'))
 
+router.get('/auth/naver/callback',passport.authenticate('naver',{
+  failureRedirect:'/'
+}),(req,res)=>{
+  res.redirect('/')
+})
 
 
 
