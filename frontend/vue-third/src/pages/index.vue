@@ -49,7 +49,7 @@ export default {
     },
     methods: {
       onScroll() {
-        console.log('onscroll');
+        
         if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
           if (this.hasMoreBoard) {
             this.$store.dispatch('board/loadBoards');

@@ -64,8 +64,6 @@ export default {
                
                 this.content = this.board.content
                 this.$store.commit('board/loadImagePaths',this.board.images.map(img => img.src))
-            }else{
-                console.log('없음')
             }
         })
      

@@ -8,9 +8,7 @@ module.exports = (passport) =>{
         clientSecret:process.env.NAVER_CLIENT_SECRET,
         callbackURL: 'http://35.231.123.89/auth/naver/callback',
     }, async (accessToken, refreshToken,profile,done)=>{
-            console.log('==========')
-            console.log(profile)
-            console.log('==========')
+           
         try{
             const exUser = await User.findOne({where:{snsID:profile.id,provider:'naver'}})
             if(exUser){

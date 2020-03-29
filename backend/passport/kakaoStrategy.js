@@ -9,7 +9,7 @@ module.exports = (passport) =>{
         callbackURL: 'http://35.231.123.89/auth/kakao/callback',
     }, async (accessToken, refreshToken,profile,done)=>{
 
-            console.log(profile)
+           
         try{
             const exUser = await User.findOne({where:{snsID:profile.id,provider:'kakao'}})
             if(exUser){

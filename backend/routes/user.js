@@ -15,13 +15,13 @@ const upload = multer()
 
 router.get('/',isLoggedIn,async (req,res,next)=>{  //유저 정보
 
-    console.log(req.session)
+   
     res.json(req.user)
   })
   
   
   router.post('/',isNotLoggedIn,async (req,res,next)=>{  //회원가입
-      console.log(req.body)
+      
       const {userId,name,password} = req.body
       try{  
         const exUser = await db.User.findOne({where:{userId}})

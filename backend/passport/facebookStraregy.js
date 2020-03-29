@@ -10,7 +10,7 @@ module.exports = (passport) => {
         callbackURL:'http://35.231.123.89/auth/facebook/callback'
     },async (accessToken, refreshToken, profile, done)=>{
         try{
-            console.log(profile)
+           
             const exUser = await User.findOne({
                 where:{
                     snsId:profile.id,

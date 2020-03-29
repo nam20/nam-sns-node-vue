@@ -88,7 +88,7 @@ const actions = {
        password: payload.password
    })
    .then(res=>{
-       console.log(res)
+       
        if(typeof res.data === 'object') commit('setMe',res.data)
    })
    .catch(err=>{
@@ -102,7 +102,7 @@ const actions = {
        password:payload.password
      })
      .then(res=>{
-         console.log(res)
+         
          if(typeof res.data === 'object') commit('setMe',res.data)
      })
      .catch(err=>{
@@ -116,7 +116,7 @@ const actions = {
          url:'/user/logout'
      })
      .then(res=>{
-         console.log(res)
+         
          commit('setMe','')
      })
      .catch(err=>[
@@ -141,7 +141,7 @@ const actions = {
            url:`/user/${userId}/follow`
        })
        .then(res=>{
-           console.log(res)
+           
            commit('following',{
                userId : res.data
            })
@@ -156,7 +156,7 @@ const actions = {
            url:`/user/${userId}/follow`
        })
        .then(res=>{
-           console.log(res)
+           
            commit('removeFollowing',{
                userId : res.data
            })
@@ -184,7 +184,7 @@ const actions = {
    loadFollowings({commit,state},payload){
        axios.get(`user/${state.me.id}/followings`)
        .then(res=>{
-           console.log(res.data)
+          
            commit('loadFollowings',res.data)
        })
        .catch(err=>{
@@ -194,7 +194,7 @@ const actions = {
    loadFollowers({commit,state},payload){
        axios.get(`user/${state.me.id}/followers`)
        .then(res=>{
-        console.log(res.data)
+        
            commit('loadFollowers',res.data)
        })
        .catch(err=>{

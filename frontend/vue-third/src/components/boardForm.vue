@@ -53,8 +53,7 @@ export default {
             })
         },
         onChangeImages(e){
-            console.log(this.$refs.image.files)
-            console.log(e.target.files, e.target.files.forEach);
+           
             const imageFormData = new FormData();
             [].forEach.call(e.target.files,(f)=>{
                 imageFormData.append('image',f)

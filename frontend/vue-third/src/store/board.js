@@ -53,9 +53,9 @@ const mutations = {
          state.boards[index].Likers.splice(userIndex,1)
      },
      concatImagePaths(state, payload) {
-         console.log(payload)
+        
          state.imagePaths = state.imagePaths.concat(payload);
-         console.log(state.imagePaths)
+       
      },
      removeImagePath(state, payload) {
          state.imagePaths.splice(payload, 1);
@@ -83,7 +83,7 @@ const actions = {
             image:state.imagePaths
         })
         .then(res=>{
-            console.log(res);
+     
             commit('addBoard',res.data)
     
          })
@@ -96,7 +96,7 @@ const actions = {
   removeBoard({commit},payload){
     axios.delete(`/board/${payload}`)
     .then(res=>{
-        console.log(res.data)
+      
         commit('removeBoard',{
             boardId:payload
        })
@@ -113,7 +113,7 @@ const actions = {
         removeImage:payload.removeImage
     })
     .then(res=>{
-        console.log(res.data)
+        
     })
     .catch(err=>{
         console.error(err)
@@ -121,13 +121,13 @@ const actions = {
   },
     addComment({state,commit},payload){
 
-      console.log(payload)
+    
       
       axios.post(`/board/${payload.boardId}/comment`,{
           content:payload.content
         })
       .then(res=>{
-          console.log(res)
+         
           commit('addComment',res.data)
           
 
@@ -139,7 +139,7 @@ const actions = {
    loadComments({commit},payload){
       axios.get(`/board/${payload.boardId}/comments`)
       .then(res=>{
-          console.log(res)
+       
         commit('loadComments',{
             boardId:payload.boardId,
             data: res.data
@@ -154,7 +154,7 @@ const actions = {
         if(payload && payload.reset){
             return axios.get('/boards?limit=10')
             .then(res=>{
-            console.log(res)
+           
             commit('loadBoards',{
                 data:res.data,
                 reset:true
@@ -166,10 +166,10 @@ const actions = {
         }else{
             if(state.hasMoreBoard){
                 let lastBoard = state.boards[state.boards.length-1]
-                console.log(lastBoard)
+            
                 return axios.get(`/boards?lastId=${lastBoard.id}&limit=10`)
                 .then(res=>{
-                    console.log(res.data)
+               
                     commit('loadBoards',{data:res.data})
                 })
                 .catch(err=>{
@@ -177,7 +177,7 @@ const actions = {
                 })
             }
         }
-    },3000),
+    },2000),
    likeBoard({commit},boardId){
      
     axios({
@@ -185,7 +185,7 @@ const actions = {
         url:`/board/${boardId}/like`
     })
     .then(res=>{
-        console.log(res)
+       
         commit('likeBoard',{
             boardId:boardId,
             userId:res.data.userId
@@ -202,7 +202,7 @@ const actions = {
         url:`/board/${boardId}/like`
     })
     .then(res=>{
-        console.log(res)
+       
         commit('unlikeBoard',{
             boardId:boardId,
             userId:res.data.userId
@@ -221,7 +221,7 @@ const actions = {
                   url:`/hashtag/${hashtag}`
               })
 
-              console.log(result)
+         
           
           }catch(err){
               console.error(err)
@@ -277,7 +277,7 @@ const actions = {
             });
        }
         
-    },3000),
+    },2000),
 
     loadBoard({commit},payload){
         axios.get(`/board/${payload}`)
@@ -313,7 +313,7 @@ const actions = {
         }
         
         
-    },3000)
+    },2000)
 }
 
 export default {
