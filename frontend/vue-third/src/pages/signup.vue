@@ -3,7 +3,7 @@
       <v-container>
           <v-card>
               <v-container>
-                  <v-subheader>훠훠가입</v-subheader>
+                  <v-subheader>회원가입</v-subheader>
                   <v-text-field v-model="userId" :rules="userIdRules" label="아이디"></v-text-field>
                   <v-text-field v-model="name" :rules="nicknameRules" label="네임"></v-text-field>
                   <v-text-field v-model="password" :rules="passwordRules" label="비밀번호"></v-text-field>

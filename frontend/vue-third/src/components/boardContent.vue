@@ -15,19 +15,21 @@
               <v-btn v-if="canUnFollow" @click="onUnFollow">언팔로우</v-btn>
           </h3>
       </v-card-title>
-      <v-card-text>
-          <div style="text-align:left;">
+      <v-card-text style="text-align:left;">
+          <div>
               <template v-for="(node,i) in nodes">
                   <router-link v-if="node.startsWith('#')" :to="`/hashtag/${node.slice(1)}`" :key="i" style="text-decoration:none">{{node}}</router-link>
                   <template v-else>{{node}}<template>
               </template>
           </div>
+           <div>{{$moment(board.createdAt).fromNow()}}</div>
       </v-card-text>
   </div>
 </template>
 
 <script>
 import boardImage from './boardImage'
+
 export default {
     props:{
         board: Object

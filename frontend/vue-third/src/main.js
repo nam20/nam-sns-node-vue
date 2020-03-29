@@ -7,11 +7,15 @@ import router from './router'
 import store from './store'
 // import Vuetify from 'vuetify'
 import vuetify from './plugins/vuetify'
+import moment from 'moment'
+import vuemoment from "vue-momentjs"
 
 import 'vuetify/dist/vuetify.min.css'
 
 // Vue.use(Vuetify)
+moment.locale('ko')
 
+Vue.use(vuemoment,moment)
 
 Vue.config.productionTip = false
 
