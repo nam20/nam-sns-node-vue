@@ -9,6 +9,7 @@ var redis = require('redis')
 var session = require('express-session')
 var RedisStore = require('connect-redis')(session)
 
+
 var sequelize = require('./models').sequelize;
 const passport = require('passport')
 const helmet = require('helmet');
@@ -22,6 +23,9 @@ let boardsRouter = require('./routes/boards')
 let boardRouter = require('./routes/board')
 let hashtagRouter = require('./routes/hashtag')
 const passportConfig = require('./passport')
+const https = require('https')
+const http = require('http')
+const fs = require('fs')
 
 var app = express();
 sequelize.sync();
@@ -45,7 +49,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/',express.static(path.join(__dirname,'uploads')))
+app.use('/',express.static(path.join(__dirname,'/')))
 
 
 
@@ -101,6 +105,15 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(app.get('port'))
+
+const options = {
+    pfx: fs.readFileSync('certificate.pfx'),
+    
+}
+
+
+https.createServer(options,app).listen(app.get('port'))
+//http.createServer(app).listen(app.get('port'))
+//app.listen(app.get('port'))
 
 //module.exports = app;

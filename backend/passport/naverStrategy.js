@@ -6,7 +6,7 @@ module.exports = (passport) =>{
     passport.use(new NaverStrategy({
         clientID:process.env.NAVER_CLIENT_ID,
         clientSecret:process.env.NAVER_CLIENT_SECRET,
-        callbackURL: 'http://35.231.123.89/auth/naver/callback',
+        callbackURL: 'http://skagmlwns123.duckdns.org/auth/naver/callback',
     }, async (accessToken, refreshToken,profile,done)=>{
            
         try{

@@ -76,7 +76,7 @@ export default {
             return this.board.user.id === this.me.id
         },
         likeIcon(){
-            return this.liked ? 'mdi-heart' : 'mdi-heart-outline'
+            return this.liked ? 'mdi-thumb-up' : 'mdi-thumb-up-outline'
         }
     },
     methods:{
