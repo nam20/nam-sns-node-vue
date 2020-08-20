@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.635.0",
-    "bcrypt": "^4.0.0",
+    "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
     "connect-history-api-fallback": "^1.6.0",
     "connect-redis": "^4.0.4",
