@@ -106,11 +106,15 @@ app.use(function(err, req, res, next) {
 });
 
 
-const options = {
-    pfx: fs.readFileSync('certificate.pfx'),
+// const options = {
+//     pfx: fs.readFileSync('certificate.pfx'),
     
-}
-
+// }
+const options = {
+  ca: fs.readFileSync('/etc/letsencrypt/live/skagmlwns123.duckdns.org/fullchain.pem'),
+  key: fs.readFileSync('/etc/letsencrypt/live/skagmlwns123.duckdns.org/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/skagmlwns123.duckdns.org/cert.pem')
+};
 
 https.createServer(options,app).listen(app.get('port'))
 //http.createServer(app).listen(app.get('port'))
