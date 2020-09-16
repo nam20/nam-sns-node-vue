@@ -52,7 +52,6 @@ export default {
       
         if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
           if (this.hasMoreBoard) {
-            
             this.$store.dispatch('board/loadUserBoards',{
               userId: this.id
             });
