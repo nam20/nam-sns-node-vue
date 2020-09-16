@@ -1,13 +1,5 @@
 <template>
-  <!-- <div>
-      <input type="text" v-model="content">
-      <input type="file" ref="image" @change="onChangeImages" multiple>
-      <button @click="submitBoard">게시글 작성</button>
-      <div v-for="(path,index) in imagePaths" :key="path">
-          <img :src="path" alt="" style="width:200px;">
-          <button @click="removeImagePath(index)">삭제</button>
-      </div>
-  </div> -->
+  
   <v-card style="margin-bottom:20px;">
       <v-container>
           <v-textarea label="내용 입력" v-model="content">   

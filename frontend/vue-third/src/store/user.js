@@ -46,7 +46,7 @@ const mutations = {
     },
 
 
-    removeFollower(state,payload){   // 자신을 팔로우하는 팔로워를 쳐낸다?
+    removeFollower(state,payload){   
         let index = state.me.Followers.findIndex(v => v.id === payload.userId);
         state.me.Followers.splice(index,1)
         index = state.followerList.findIndex(v => v.id === payload.userId)
@@ -123,17 +123,6 @@ const actions = {
          console.log(err)
      ])
   },  
-
-//   facebookLogin(){
-//     axios.get('/auth/facebook')
-//     .catch(err=>{
-//         console.error(err)
-//     })
-//   },
-//   googleLogin(){
-//     axios.get('/auth/google')
-//   },  
-//  axios 요청 시 cors 문제 발생
 
   follow({commit},userId){
        axios({

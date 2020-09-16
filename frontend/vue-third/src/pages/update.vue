@@ -15,7 +15,6 @@
             </div>
           </div>
          
-          <!-- <div v-if="board">돼냐</div> -->
         </div>
       </v-container>
   </v-card>

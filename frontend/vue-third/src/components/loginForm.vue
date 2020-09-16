@@ -34,18 +34,7 @@
                 </v-container>
             </v-card>
       </v-container>
-      
-
-      <!-- <div v-if="!me">
-          <input type="text" v-model="userId" placeholder="userId">
-          <input type="text" v-model="password" placeholder="password">
-          <input type="text" v-model="name" placeholder="name">
-          <button @click="$store.dispatch('user/join',{userId,name,password})">조인</button>
-          <button @click="$store.dispatch('user/login',{userId,password})">로그인</button>
-      </div>
-      <div v-else>
-          <button @click="$store.dispatch('user/logout')">로그아웃</button>
-      </div> -->
+   
   </div>
 </template>
 
@@ -79,13 +68,7 @@ export default {
         onLogOut(){
             this.$store.dispatch('user/logout')
         },
-        // facebookLogin(){
-        //     this.$store.dispatch('user/facebookLogin')
-        // },
-        // googleLogin(){
-        //     this.$store.dispatch('user/googleLogin')
-        // }
-        
+
         
     },
     created(){

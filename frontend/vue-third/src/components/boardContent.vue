@@ -1,11 +1,6 @@
 <template>
   <div>
-      <!-- <button v-if="canFollow && me" @click="onFollow">팔로우</button>
-      <button v-else-if="canUnFollow && me" @click="onUnFollow">언팔로우</button>
-      <template v-for="(node,index) in nodes">
-          <strong v-if="node.startsWith('#')" :key="index">{{node}}</strong>
-          <template v-else>{{node}}</template>
-      </template> -->
+      
       <board-image :images="board.images" /> 
       <v-card-title>
           <h3>
